@@ -239,9 +239,9 @@ plot(x)
 
 slope <- terrain(elevation, opt = "slope")
 aspect <- terrain(elevation, opt = "aspect")
-plot(elevation, col = rainbow(30, alpha = 0.60), axes = FALSE, box = FALSE, legend = FALSE)
+plot(elevation, col = rainbow(30, alpha = 0.60), useRaster = TRUE, axes = FALSE, box = FALSE, legend = 'FALSE')
 
-writeRaster(tmin1.c, filename = "tmin1.c.grd", overwrite=TRUE)
+writeRaster(tmin1.c, filename = "tmin1.c.grd")
 
 ## class       : RasterLayer 
 ## dimensions  : 120, 120, 14400  (nrow, ncol, ncell)
@@ -253,7 +253,7 @@ writeRaster(tmin1.c, filename = "tmin1.c.grd", overwrite=TRUE)
 ## values      : -12.3, 10.3  (min, max)
 
 
-writeRaster(tmin.all.c, filename = "tmin.all.grd", overwrite=TRUE)
+# writeRaster(tmin.all.c, filename = "tmin.all.grd", overwrite=TRUE)
 
 ## class       : RasterBrick 
 ## dimensions  : 120, 120, 14400, 12  (nrow, ncol, ncell, nlayers)
