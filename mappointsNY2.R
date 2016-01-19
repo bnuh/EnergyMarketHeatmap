@@ -26,11 +26,11 @@ data(countriesLow)
 ##plot(coastsCoarse, add = T)
 
 locs.gb <-
-  subset(locs, locs$country == "United Kingdom")  # select only locs in UK
+  subset(locs, locs$country == "Spain")  # select only locs in UK
 ## plot(locs.gb, pch = 20, cex = 2, col = "steelblue")
 ##plot(countriesLow, add = T)
 
-gbmap <- gmap(locs.gb, type = "satellite")
+gbmap <- gmap(locs.gb, type = "terrain")
 locs.gb.merc <-
   Mercator(locs.gb)  # Google Maps are in Mercator projection.
 # This function projects the points to that projection to enable mapping
@@ -60,11 +60,7 @@ iconSel = paste0(
   "}}"
 )
 
-# see the file in the wd
-PlotOnStaticMap(
-  mymap, lat = locs.gb.coords$lat, lon = locs.gb.coords$lon, zoom = NULL,
-  cex = 1.3, pch = 19, col = "red", FUN = points, add = F
-)
+require(googleVis)
 
 mymap <-
   GetMap.bbox(map.lim$lonR, map.lim$latR, destfile = "gmap.png", maptype = "hybrid")
@@ -74,14 +70,18 @@ PlotOnStaticMap(
   cex = 1.3, pch = 19, col = "red", FUN = points, add = F
 )
 
+
 points.gb <- as.data.frame(locs.gb)
-points.gb$price <- paste("LBMP: ", points.gb$lat , sep="")
-points.gb$latlon <- paste(points.gb$lat, points.gb$lon, sep = ":")
+points.gb$price <- paste(paste("GENERATOR NAME", "", sep="<br>"), "LBMP: ", paste(points.gb$lat + points.gb$lon, "", sep = "<br>"), "Latitude: ", 
+                         paste(points.gb$lat,  "", sep = "<br>"), "Longitude: ", 
+                         paste(points.gb$lon,  "", sep = "<br>"), sep = "")
+
+points.gb$latlon <- paste(points.gb$lat, points.gb$lon, sep=":")
 map.gb <- gvisMap(
   points.gb, locationvar = "latlon", tipvar = "price",
   options = list(
     showTip = T, icons = iconSel, showLine = F, enableScrollWheel = TRUE,
-    useMapTypeControl = T, width = 1400,height = 800
+    useMapTypeControl = T, mapType = 'terrain', labels = F, width = 1400,height = 950
   )
 )
 plot(map.gb)
