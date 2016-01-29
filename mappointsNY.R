@@ -1,5 +1,12 @@
 library(dismo)  # check also the nice 'rgbif' package!
 
+test = read.csv("Test Data.csv", skip = 1, fill = T, header = T, na.strings = "null")
+test2 = read.csv("Test Data2.csv", skip = 1, fill = T, header = T, na.strings = "null")
+test <- test[-c(1,2)]
+test <- test[-c(4,6,7)]
+test2 <- test2[-c(1,2,4,5)]
+test$LBMP <- test2
+
 locs = read.csv("Test.csv", header = T, col.names = c("country", "lat", "lon"), as.is = T, na.strings = 0)
 lbmp = read.csv("Test2.csv", header = T, col.names = c("price", "gen"), as.is = T)
 
@@ -44,7 +51,7 @@ map.ny <- gvisMap(
 plot(map.ny)
 
 htmlOut = print(map.ny)
-write(htmlOut, file = "map.html")
+write(htmlOut, file = "")
 
 crs.geo <- CRS("+proj=longlat +ellps=WGS84 +datum=WGS84")  # geographical, datum WGS84
 proj4string(locs) <- crs.geo  # define projection system of our data
@@ -58,6 +65,10 @@ fromDisk(tmin1)
 tmin1 <- tmin1/10  # Worldclim temperature data come in decimal degrees 
 
 plot(tmin1)
+
+##locs2ras <- rasterize(xy, field = rep(1, nrow(xy)))
+##locs2ras
+##plot(locs2ras)
 
 library(gtools)
 file.remove(paste(getwd(), "/wc10/", "tmin_10m_bil.zip", sep = ""))

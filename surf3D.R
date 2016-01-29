@@ -18,8 +18,10 @@ y <- r * cos(phi)
 z <- r * sin(phi) * sin(theta)
 
 # full colored image
-surf3D(x, y, z, colvar = y, resfac = 10, colkey = FALSE, box = FALSE, 
-       theta = 0, phi = 0, facets = T, inttype = 2, alpha = 1, xlim = range(x)*0.8, 
-       ylim = range(y)*0.8, zlim = range(z)*0.8)
+surf3D(s, colvar = z, resfac = 10, colkey = FALSE, box = FALSE, 
+       theta = 0, phi = 75, facets = T, inttype = 3, full = T, alpha = 1, scale = 1, xlim = range(x)*1, 
+       ylim = range(y)*1, zlim = range(z)*1)
+
+
 
 
