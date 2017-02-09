@@ -1,0 +1,90 @@
+<!doctype HTML>
+<meta charset = 'utf-8'>
+<html>
+  <head>
+    
+    <script src='C:/Users/brymelet/Documents/R/R-3.2.3/library/rCharts/libraries/highcharts/js/jquery-1.9.1.min.js' type='text/javascript'></script>
+    <script src='C:/Users/brymelet/Documents/R/R-3.2.3/library/rCharts/libraries/highcharts/js/highcharts.js' type='text/javascript'></script>
+    <script src='C:/Users/brymelet/Documents/R/R-3.2.3/library/rCharts/libraries/highcharts/js/highcharts-more.js' type='text/javascript'></script>
+    <script src='C:/Users/brymelet/Documents/R/R-3.2.3/library/rCharts/libraries/highcharts/js/exporting.js' type='text/javascript'></script>
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js' type='text/javascript'></script>
+    <script src='https://code.highcharts.com/highcharts.js' type='text/javascript'></script>
+    <script src='https://code.highcharts.com/highcharts-more.js' type='text/javascript'></script>
+    <script src='https://code.highcharts.com/modules/exporting.js' type='text/javascript'></script>
+    <script src='https://code.highcharts.com/modules/heatmap.js' type='text/javascript'></script>
+    
+    <style>
+    .rChart {
+      display: block;
+      margin-left: auto; 
+      margin-right: auto;
+      width: 800px;
+      height: 400px;
+    }  
+    </style>
+    
+  </head>
+  <body >
+    
+    <div id = 'chart121c58421811' class = 'rChart highcharts'></div>    
+    <script type='text/javascript'>
+    (function($){
+        $(function () {
+            var chart = new Highcharts.Chart({
+ "dom": "chart121c58421811",
+"width":            800,
+"height":            400,
+"credits": {
+ "text": "Created with rCharts and Highcharts",
+"href": "http://rcharts.io" 
+},
+"exporting": {
+ "enabled": false 
+},
+"title": {
+ "text": "Sales per employee per weekday" 
+},
+"yAxis": [
+ {
+ "categories": [ "Monday", "Tuesday", "Wednesday", "Thursday", "Friday" ],
+"title": {
+ "text": "" 
+} 
+} 
+],
+"chart": {
+ "zoomType": "x",
+"type": "heatmap",
+"renderTo": "chart121c58421811" 
+},
+"xAxis": [
+ {
+ "categories": [ "Alexander", "Marie", "Maximilian", "Sophia", "Lukas", "Maria", "Leon", "Anna", "Tim", "Laura" ] 
+} 
+],
+"colorAxis": {
+ "min":              0,
+"minColor": "#FFFFFF",
+"maxColor": "#7cb5ec" 
+},
+"legend": {
+ "align": "right",
+"layout": "vertical",
+"margin":              0,
+"verticalAlign": "top",
+"y":             25,
+"symbolHeight":            320 
+},
+"tooltip": {
+ "formatter":  function() { return '<b>' + this.series.xAxis.categories[this.point.x] + '</b> sold <br><b>' +
+          this.point.value + '</b> items on <br><b>' + this.series.yAxis.categories[this.point.y] + '</b>'; }  
+},
+"id": "chart121c58421811" 
+});
+        });
+    })(jQuery);
+</script>
+    
+    <script></script>    
+  </body>
+</html>
